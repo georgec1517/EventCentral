@@ -1,10 +1,13 @@
 {% extends 'eventcentral/base.html' %}
 {% block content %}
+{% load static %}
     <h1>New Event</h1>
     <br>
     {% if submitted %}
         Event Posted
     {% else %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{ form.media }}
         <form action="" method=POST enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}

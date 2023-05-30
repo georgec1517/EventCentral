@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Event
 from .forms import EventForm
 from django.http import HttpResponseRedirect

@@ -1,4 +1,5 @@
 from django import forms
+from bootstrap_datepicker_plus.widgets import DatePickerInput
 from django.forms import ModelForm
 from .models import Event
 
@@ -16,7 +17,7 @@ class EventForm(ModelForm):
         }
         widgets = {
             'name' : forms.TextInput(attrs={'class':'form-control','placeholder': 'Event Title'}),
-            'event_date' : forms.TextInput(attrs={'class':'form-control','placeholder': 'Date'}),
+            'event_date' : DatePickerInput(options={"format": "YYYY-MM-DD"}),
             'description' : forms.Textarea(attrs={'class':'form-control','placeholder': 'Description'}),
             'opentodept' : forms.Select(attrs={'class':"form-select",})
         }
