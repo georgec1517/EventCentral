@@ -1,0 +1,14 @@
+{% extends 'eventcentral/base.html' %}
+{% block content %}
+    <h1>New Event</h1>
+    <br>
+    {% if submitted %}
+        Event Posted
+    {% else %}
+        <form action="" method=POST enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type = "submit" value="Submit" class="btn btn-secondary">
+        </form>
+    {% endif %}
+{% endblock %}

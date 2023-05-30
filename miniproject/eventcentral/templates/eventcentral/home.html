@@ -1,0 +1,48 @@
+{% extends 'eventcentral/base.html' %}
+{% block content %}
+<style>
+    .card-column {
+      margin-bottom: 20px;
+    }
+    .custom-card-img {
+    height: 200px;
+    object-fit: cover;
+    }
+  </style>
+<br><br>
+<center>
+<button type="button" class="btn btn-outline-secondary btn-lg"><strong>Join Events</strong></button>
+<button type="button" class="btn btn-outline-dark btn-lg"><strong>Start Events</strong></button>
+</center>
+<br>
+<br>
+<br>
+{% regroup event_list by opentodept as grouped_list %}
+{% for group in grouped_list %}
+<h2>{{ group.grouper }}</h2>
+<br>
+<div class="row">
+    {% for item in group.list %}
+    <div class="col-md-4 card-column">
+      <div class="card h-100">
+        {% if item.event_image %}
+        <img class="card-img-top custom-card-img" src="{{item.event_image.url}}" alt="Image">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ item }}</h5>
+          <p class="card-text"><br> Last date to apply: {{ item.event_date }}</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-secondary">Apply</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+</div>
+<br>
+<br>
+{% endfor %}
+{% endblock %}
+
+

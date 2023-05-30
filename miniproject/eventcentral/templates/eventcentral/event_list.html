@@ -1,0 +1,33 @@
+
+{% extends 'eventcentral/base.html' %}
+{% block content %}
+<style>
+    .card-column {
+      margin-bottom: 20px;
+    }
+    .custom-card-img {
+    height: 200px;
+    object-fit: cover;
+    }
+  </style>
+<h1>All Events</h1>
+<br>
+<div class="row">
+    {% for event in event_list %}
+    <div class="col-md-4 card-column">
+      <div class="card h-100">
+        {% if event.event_image %}
+        <img class="card-img-top custom-card-img" src="{{event.event_image.url}}" alt="Image">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ event }}</h5>
+          <p class="card-text">{{ event.description }} <br><br>Available for: {{event.opentodept}} <br><br> Last date to apply: {{ event.event_date }}</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-secondary">Apply</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
