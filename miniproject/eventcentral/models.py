@@ -17,6 +17,7 @@ class EventCentralUser(models.Model):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
+
 DEPT_CHOICES = (
     ('Computer Science and Engineering','CSE'),
     ('Mechanical Engineering', 'ME'),

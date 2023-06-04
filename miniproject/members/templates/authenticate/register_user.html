@@ -1,0 +1,17 @@
+{% extends 'eventcentral/base.html' %}
+{% block content %}
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+    There was an error
+  </div>
+{% endif %}
+    <h1 class="display-2">Register</h1>
+    <br>
+        <form action="{%url 'register_user' %}" method=POST>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br><br><br>
+
+            <input type = "submit" value="Submit" class="btn btn-secondary">
+        </form>
+{% endblock %}

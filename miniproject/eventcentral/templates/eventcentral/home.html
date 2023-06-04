@@ -17,9 +17,38 @@
 <br>
 <br>
 <br>
+{% if closing %}
+<h1 class="display-3">Last Day to Register</h1>
+<br>
+<div class="row">
+{% for event in closing %}
+<br>
+    <div class="col-md-4 card-column">
+      <div class="card h-100">
+        {% if event.event_image %}
+        <img class="card-img-top custom-card-img" src="{{item.event_image.url}}" alt="Image">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ event }}</h5>
+          <p class="card-text"><p class="font-monospace">{{ event.description|slice:":100" }}...</p><br> Last date to apply: {{ event.event_date }}</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-secondary">Apply</a>
+        </div>
+      </div>
+    </div>
+
+</div>
+<br>
+<br>
+{% endfor %}
+{% endif %}
+
+
+
 {% regroup event_list by opentodept as grouped_list %}
 {% for group in grouped_list %}
-<h2>{{ group.grouper }}</h2>
+<h1 class="display-3">{{ group.grouper }}</h1>
 <br>
 <div class="row">
     {% for item in group.list %}
@@ -30,7 +59,7 @@
         {% endif %}
         <div class="card-body">
           <h5 class="card-title">{{ item }}</h5>
-          <p class="card-text"><br> Last date to apply: {{ item.event_date }}</p>
+          <p class="card-text"><p class="font-monospace">{{ item.description|slice:":100" }}...</p><br> Last date to apply: {{ item.event_date }}</p>
         </div>
         <div class="card-footer">
           <a href="#" class="btn btn-secondary">Apply</a>
@@ -40,6 +69,7 @@
     {% endfor %}
 
 </div>
+<br>
 <br>
 <br>
 {% endfor %}

@@ -1,7 +1,10 @@
-{% extends 'events/base.html' %}
+{% extends 'eventcentral/base.html' %}
 {% block content %}
+{% load static %}
 <h1>Update Event</h1>
 <br>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{ form.media }}
 <form action="" method=POST>
     {% csrf_token %}
     {{ form.as_p }}
