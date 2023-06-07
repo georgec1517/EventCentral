@@ -24,8 +24,12 @@
           <p class="card-text"><p class="font-monospace">{{ event.description|slice:":100" }}...</p>Available for: {{event.opentodept}} <br><br> Last date to apply: {{ event.event_date }}</p>
         </div>
         <div class="card-footer">
+          {% if user.is_authenticated %}
           <a href="{% url 'update-event' event.id %}" class="btn btn-outline-secondary">Update Event</a>
           <a href="{% url 'delete-event' event.id %}" class="btn btn-danger">Delete Event</a>
+          {%else%}
+          <a href="#" class="btn btn-outline-secondary">Apply</a>
+          {%endif%}
         </div>
       </div>
     </div>
