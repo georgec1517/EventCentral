@@ -4,6 +4,7 @@ from .forms import EventForm
 from django.http import HttpResponseRedirect
 from datetime import date
 
+
 # Create your views here.
 def home(request):
     today = date.today()
@@ -56,3 +57,4 @@ def delete_event(request, event_id):
     event=Event.objects.get(pk=event_id)
     event.delete()
     return redirect('list-events')
+
